@@ -91,7 +91,7 @@ $ hexo d
 
 我选择的是 [Hexo Theme Cupertino](https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/https://github.com/MrWillCom/hexo-theme-cupertino)
 
-![image-20220110164357577](https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/image-20220110164357577.png)
+![image-20220110164357577](https://gitee.com/xljzt/img/main/blog/image-20220110164357577.png)
 
 完全符合我的审美
 
