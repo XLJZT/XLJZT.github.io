@@ -75,21 +75,21 @@ katex:
 # --------------------------------------
 
 # Favicon（網站圖標）
-favicon: https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/icon.png
+favicon: https://gitlab.com/XLJZT/img/-/raw/main/blog/icon.png
 
 # Avatar (頭像)
 avatar:
-  img: https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/head.jpg
+  img: https://gitlab.com/XLJZT/img/-/raw/main/blog/head.jpg
   effect: false
 
 # Disable all banner image
 disable_top_img: false
 
 # The banner image of home page
-index_img: https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/index.jpg
+index_img: https://gitlab.com/XLJZT/img/-/raw/main/blog/index.jpg
 
 # If the banner of page not setting, it will show the top_img
-default_top_img: https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/index.jpg
+default_top_img: https://gitlab.com/XLJZT/img/-/raw/main/blog/index.jpg
 
 # The banner image of archive page
 archive_img:
@@ -126,8 +126,8 @@ cover:
 
 # Replace Broken Images (替換無法顯示的圖片)
 error_img:
-  flink: https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/index.gif
-  post_page: https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/index.gif
+  flink: https://gitlab.com/XLJZT/img/-/raw/main/blog/index.gif
+  post_page: https://gitlab.com/XLJZT/img/-/raw/main/blog/index.gif
 
 # A simple 404 page
 error_404:

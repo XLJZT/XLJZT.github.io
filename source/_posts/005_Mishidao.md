@@ -2,8 +2,8 @@
 title: 迷失岛面试题
 description: 
 date: 2022-6-20
-top_image: https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/image-20220620135717244.png
-cover: https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/image-20220620135717244.png
+top_image: https://gitlab.com/XLJZT/img/-/raw/main/blog/image-20220620135717244.png
+cover: https://gitlab.com/XLJZT/img/-/raw/main/blog/image-20220620135717244.png
 categories: 
 - Unity
 tag: 
@@ -18,7 +18,7 @@ tag:
 
 首先还是要感谢麦扣老师，[视频链接](https://www.bilibili.com/video/BV1vY4y1W7YD/?spm_id_from=333.788&vd_source=cb5794df42f8077181bc5f31958ae7df)。
 
-![image-20220620135717244](https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/image-20220620135717244.png)
+![image-20220620135717244](https://gitlab.com/XLJZT/img/-/raw/main/blog/image-20220620135717244.png)
 
 这是一道为期一周的面试题，包含了许多功能，我觉得游戏的主要目的并不是说把功能实现的多么完美，当然也是需要的，更多的是可拓展性，在当前的框架下可以延续出更多的功能。这才是这个面试题的精髓，而且也与我目前需要学习的游戏框架搭建和理念算是不谋而合吧。
 
@@ -26,7 +26,7 @@ tag:
 
 # 1.场景转换
 
-![场景转换](https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/%E5%9C%BA%E6%99%AF%E8%BD%AC%E6%8D%A2.png)在项目中一共有5个场景，通过点击箭头或物体触发碰撞转场。游戏整体还是一个通过鼠标的点击进行操作的游戏，所以各种交互或者事件都是通过鼠标的点击进行完成。比如场景转换，人物交互，物品交互以及小游戏的实现，在项目里几乎用不到键盘。所以需要一个**CursorManager**进行对其管理。
+![场景转换](https://gitlab.com/XLJZT/img/-/raw/main/blog/%E5%9C%BA%E6%99%AF%E8%BD%AC%E6%8D%A2.png)在项目中一共有5个场景，通过点击箭头或物体触发碰撞转场。游戏整体还是一个通过鼠标的点击进行操作的游戏，所以各种交互或者事件都是通过鼠标的点击进行完成。比如场景转换，人物交互，物品交互以及小游戏的实现，在项目里几乎用不到键盘。所以需要一个**CursorManager**进行对其管理。
 
 **CursorManager**通过获取鼠标的世界坐标，实时监测鼠标的位置是否有碰撞体` private Collider2D ObjectAtMousePosition()`,如果返回碰撞体存在并同时触发鼠标点击操作，则调用`ClickAction(GameObject clickObject)`并使用Switch语句根据碰撞体的Tag进行不同的代码调用和操作。
 
@@ -44,23 +44,23 @@ tag:
 
 # 2.背包逻辑与UI
 
-![背包](https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/%E8%83%8C%E5%8C%85.png)
+![背包](https://gitlab.com/XLJZT/img/-/raw/main/blog/%E8%83%8C%E5%8C%85.png)
 
 # 3.保存物品
 
-![保存物品](https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/%E4%BF%9D%E5%AD%98%E7%89%A9%E5%93%81.png)
+![保存物品](https://gitlab.com/XLJZT/img/-/raw/main/blog/%E4%BF%9D%E5%AD%98%E7%89%A9%E5%93%81.png)
 
 # 4.互动逻辑
 
-![互动逻辑](https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/%E4%BA%92%E5%8A%A8%E9%80%BB%E8%BE%91.png)
+![互动逻辑](https://gitlab.com/XLJZT/img/-/raw/main/blog/%E4%BA%92%E5%8A%A8%E9%80%BB%E8%BE%91.png)
 
 # 5.人物对话
 
-![对话](https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/%E5%AF%B9%E8%AF%9D.png)
+![对话](https://gitlab.com/XLJZT/img/-/raw/main/blog/%E5%AF%B9%E8%AF%9D.png)
 
 # 6.小游戏
 
-![小游戏](https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/%E5%B0%8F%E6%B8%B8%E6%88%8F.png)
+![小游戏](https://gitlab.com/XLJZT/img/-/raw/main/blog/%E5%B0%8F%E6%B8%B8%E6%88%8F.png)
 
 # 总结
 

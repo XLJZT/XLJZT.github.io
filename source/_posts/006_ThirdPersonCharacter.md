@@ -3,8 +3,8 @@
 title: 第三人称视角摄像机和Ai跟随
 description: 
 date: 2022-7-24
-top_image: https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/006_Third_006.png
-cover: https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/006_Third_006.png
+top_image: https://gitlab.com/XLJZT/img/-/raw/main/blog/006_Third_006.png
+cover: https://gitlab.com/XLJZT/img/-/raw/main/blog/006_Third_006.png
 categories: 
 - Unity
 tag: 
@@ -22,27 +22,27 @@ tag:
 
 使用Cinemachine的 Freelook 相机进行人物第三人称，使用到的插件和素材分别有，Cinemachine，Asset Store里的Basic motion
 
-![Untitled](https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/006_Third_001.png)
+![Untitled](https://gitlab.com/XLJZT/img/-/raw/main/blog/006_Third_001.png)
 
 将素材导入到Project中，人物拖进Hierarchy里，并生成Perfab。为人物添加Animation Controller 创建一个BlendTree控制人物站立行走跑步的动画。最终效果如下图。
 
-![Untitled](https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/006_Third_002.png)
+![Untitled](https://gitlab.com/XLJZT/img/-/raw/main/blog/006_Third_002.png)
 
 创建一个行走的地面，hierarchy 窗口里直接创建 3D plane 设置scale的x和z为20，场景为白色。生成一个material ，名字为Ground，选择适合的颜色并设置Albedo为棋盘格，拖拽Ground到刚创建的地面里，为地面添加材质。添加之后发现平铺效果不尽人意，返回Ground设置第一个Tilling的X值和Y值为5或10。这样就生成了一个标准的棋盘样式地面。
 
-![Untitled](https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/006_Third_003.png)
+![Untitled](https://gitlab.com/XLJZT/img/-/raw/main/blog/006_Third_003.png)
 
 # 添加摄像机
 
 unity上方选择Cinemachine里的FreeLook摄像机，绑定摄像机的Follow at和Look at为Player。根据个人习惯调整X Axis 以及Y Axis的 Input Axis value的Invert（反转）。设置Orbits的Toprig，MiddleRig以及BottomRig的Height和Radius，这三个分别为上中下三个旋转圈的高度以及半径。
 
-![Untitled](https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/006_Third_004.png)
+![Untitled](https://gitlab.com/XLJZT/img/-/raw/main/blog/006_Third_004.png)
 
-![Untitled](https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/006_Third_005.png)
+![Untitled](https://gitlab.com/XLJZT/img/-/raw/main/blog/006_Third_005.png)
 
 接下俩设置Aim一的Tracked Object Offset，这个数值为偏移量。当摄像机处在上中下三个旋转圈的范围时，摄像机注视的中心点。设置Top，Middle，Bottom的Y值分别为 1.5，1，1.3。最终效果为下图，黄点与十字交叉中心位置的偏移
 
-![Untitled](https://cdn.jsdelivr.net/gh/XLJZT/img@main/blog/006_Third_006.png)
+![Untitled](https://gitlab.com/XLJZT/img/-/raw/main/blog/006_Third_006.png)
 
 这样一个简陋的第三人称摄像头创建结束。
 
