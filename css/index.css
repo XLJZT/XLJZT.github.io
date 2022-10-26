@@ -3693,6 +3693,7 @@ h1.page-title + .tag-cloud-list {
 #article-container {
   word-wrap: break-word;
   overflow-wrap: break-word;
+  font-size: 16px;
 }
 #article-container a {
   color: #49b1f5;
@@ -3711,7 +3712,7 @@ h1.page-title + .tag-cloud-list {
   transition: filter 375ms ease-in 0.2s;
 }
 #article-container p {
-  margin: 0 0 16px;
+  margin: 0 0 10px;
 }
 #article-container iframe {
   margin: 0 0 20px;
