@@ -2,8 +2,8 @@
 title: Ubuntu命令学习及大数据平台安装问题
 description: 
 date: 2022-10-26
-top_image: https://gitlab.com/XLJZT/img/-/raw/main/blog/pictures/2022/10/26_17_20_6_image-20221026172000350.png
-cover: https://gitlab.com/XLJZT/img/-/raw/main/blog/pictures/2022/10/26_17_20_6_image-20221026172000350.png
+top_image: https://gitlab.com/XLJZT/img/-/raw/main/blog/pictures/2022/10/28_16_34_28_%E5%9B%BE%E7%89%871.png
+cover: https://gitlab.com/XLJZT/img/-/raw/main/blog/pictures/2022/10/28_16_34_28_%E5%9B%BE%E7%89%871.png
 categories: 
 - Ubuntu
 - Hadoop
@@ -11,6 +11,8 @@ tag:
 - Ubuntu
 - Hadoop
 - Scala
+
+
 
 
 ---
@@ -251,6 +253,22 @@ ssh hadoop1 date
 ![image-20221026185848317](https://gitlab.com/XLJZT/img/-/raw/main/blog/pictures/2022/10/26_18_58_52_image-20221026185848317.png)
 
 每条命令成功后都会返回被链接机器的时间
+
+**重点**
+
+之后需要将其他机器的公钥全部添加到authorized_keys中
+
+```
+cat id_rsa.pub >> authorized_keys
+```
+
+> 第一台机器生成`authorized_keys`之后，将其发给第二台机器，第二台添加上公钥之后，发给第三台，直到最后一台添加上公钥之后，将所有的已经添加好的公钥文件发给其他的机器上
+
+```
+scp authorized_keys hd@hadoop3:/home/pf/.ssh
+```
+
+最后达到免输密码的效果。
 
 **scp问题**
 

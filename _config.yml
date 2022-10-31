@@ -103,9 +103,9 @@ theme: butterfly
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-- type: git
-  repo: https://gitee.com/xljzt/xljzt.git
-  branch: blog
+# - type: git
+#   repo: https://gitee.com/xljzt/xljzt.git
+#   branch: blog
 - type: git
   repo: https://github.com/XLJZT/XLJZT.github.io.git
   branch: blog
