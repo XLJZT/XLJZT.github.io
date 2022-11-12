@@ -1,0 +1,332 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Leetcode刷题折磨记录 | XLJZT</title><meta name="author" content="XLJZT"><meta name="copyright" content="XLJZT"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="有必要说明一下，题目和部分代码皆来自LeetCode，解题思路掺杂了我学习之后的一些想法。很多题目没有被我做出来，所以我看过官方的答案之后记录在此，每个题目都是一个超链接，链接到原题。  动态规划问题309. 最佳买卖股票时机含冷冻期给定一个整数数组prices，其中第 prices[i] 表示第 i 天的股票价格 。 设计一个算法计算出最大利润。在满足以下约束条件下，你可以尽可能地完成更多的交">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode刷题折磨记录">
+<meta property="og:url" content="https://www.xljzt.top/2022/11/12/009_LeetCode001/index.html">
+<meta property="og:site_name" content="XLJZT">
+<meta property="og:description" content="有必要说明一下，题目和部分代码皆来自LeetCode，解题思路掺杂了我学习之后的一些想法。很多题目没有被我做出来，所以我看过官方的答案之后记录在此，每个题目都是一个超链接，链接到原题。  动态规划问题309. 最佳买卖股票时机含冷冻期给定一个整数数组prices，其中第 prices[i] 表示第 i 天的股票价格 。 设计一个算法计算出最大利润。在满足以下约束条件下，你可以尽可能地完成更多的交">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2021/07/15/lc-domino1.jpg">
+<meta property="article:published_time" content="2022-11-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-11-12T02:00:42.580Z">
+<meta property="article:author" content="XLJZT">
+<meta property="article:tag" content="Leetcode">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2021/07/15/lc-domino1.jpg"><link rel="shortcut icon" href="https://gitlab.com/XLJZT/img/-/raw/main/blog/icon.png"><link rel="canonical" href="https://www.xljzt.top/2022/11/12/009_LeetCode001/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//www.clarity.ms"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="jxqrJ4XiYwC2QnM0suVYZCswceRGbHugxGv-8BC7Edw"/><meta name="baidu-site-verification" content="code-xBfTdo040v"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-6PR92JZQWR"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-6PR92JZQWR');
+</script><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "bvjqjfebg9");</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Leetcode刷题折磨记录',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-12 10:00:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://gitlab.com/XLJZT/img/-/raw/main/blog/head.jpg" onerror="onerror=null;src='https://gitlab.com/XLJZT/img/-/raw/main/blog/index.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://assets.leetcode.com/uploads/2021/07/15/lc-domino1.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">XLJZT</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Leetcode刷题折磨记录</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-11T16:00:00.000Z" title="发表于 2022-11-12 00:00:00">2022-11-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-12T02:00:42.580Z" title="更新于 2022-11-12 10:00:42">2022-11-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Leetcode/">Leetcode</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Leetcode刷题折磨记录"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>有必要说明一下，题目和部分代码皆来自LeetCode，解题思路掺杂了我学习之后的一些想法。很多题目没有被我做出来，所以我看过官方的答案之后记录在此，每个题目都是一个超链接，链接到原题。</p>
+</blockquote>
+<h1 id="动态规划问题"><a href="#动态规划问题" class="headerlink" title="动态规划问题"></a>动态规划问题</h1><h2 id="309-最佳买卖股票时机含冷冻期"><a href="#309-最佳买卖股票时机含冷冻期" class="headerlink" title="309. 最佳买卖股票时机含冷冻期"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/">309. 最佳买卖股票时机含冷冻期</a></h2><p>给定一个整数数组<code>prices</code>，其中第 <code>prices[i]</code> 表示第 <code>i</code> 天的股票价格 。</p>
+<p>设计一个算法计算出最大利润。在满足以下约束条件下，你可以尽可能地完成更多的交易（多次买卖一支股票）:</p>
+<ul>
+<li>卖出股票后，你无法在第二天买入股票 (即冷冻期为 1 天)。</li>
+</ul>
+<p><strong>注意：</strong>你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: prices = [1,2,3,0,2]</span><br><span class="line">输出: 3 </span><br><span class="line">解释: 对应的交易状态为: [买入, 卖出, 冷冻期, 买入, 卖出]</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: prices = [1]</span><br><span class="line">输出: 0</span><br></pre></td></tr></table></figure>
+
+<p>使用<strong>动态规划</strong>的思想，每天的状态都只有三种，而且每天的状态都与前两天的状态有关。在这个题目里</p>
+<blockquote>
+<ol>
+<li><p>这个状态是指这一天结束时的状态</p>
+</li>
+<li><p>股票的收益不是每天计算，当买入时的收益时负收益，而当卖出时候的收益则是正收益。当持有股票是，收益是与买入时收益相等的</p>
+</li>
+</ol>
+<ul>
+<li><p>我们目前持有一支股票，对应的「累计最大收益」记为 <code>f\[i\][0]f[i\][0]</code>；</p>
+</li>
+<li><p>我们目前不持有任何股票，并且处于冷冻期中，对应的「累计最大收益」记为 <code>f[i\][1]f[i\][1]</code>；</p>
+</li>
+<li><p>我们目前不持有任何股票，并且不处于冷冻期中，对应的「累计最大收益」记为<code>f[i\][2]f[i\][2]</code>。</p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li><p><strong>手上持有的股票的最大收益</strong>：当天没有买入、卖出或处于冷冻期</p>
+<p>第一种情况：股票是之前买入，收益为<code>f[i-1\][0]</code></p>
+<p>第二种情况：股票是今天买入，那么前一天就不能持有股票并且不能处于冷冻期（就是前一天不能是刚卖），收益为<code>f[i-1\][2]-prices[i]</code></p>
+</li>
+<li><p><strong>目前不持有任何股票，且处于冷冻期（今天刚卖）</strong>：没有交易产生</p>
+<p>收益只有一种：之前持有股票的收益加上卖出的股票的收益 <code>f[i-1\][0] + prices[i]</code></p>
+</li>
+<li><p><strong>目前不持有任何股票，且不处于冷冻期</strong></p>
+<p>第一种情况：因为没有处于冷冻期，所以第 <code>i-1</code> 天没有发生操作，并且如果不处于冷冻期，收益为<code>f[i-1\][2]</code></p>
+<p>第二种情况：如果<code>i-1</code>天处于冷冻期，收益为<code>f[i-1\][1]</code></p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">maxProfit</span>(<span class="params">self, prices: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> prices:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        </span><br><span class="line">        n = <span class="built_in">len</span>(prices)</span><br><span class="line">        <span class="comment"># f[i][0]: 手上持有股票的最大收益</span></span><br><span class="line">        <span class="comment"># f[i][1]: 手上不持有股票，并且处于冷冻期中的累计最大收益</span></span><br><span class="line">        <span class="comment"># f[i][2]: 手上不持有股票，并且不在冷冻期中的累计最大收益</span></span><br><span class="line">        f = [[-prices[<span class="number">0</span>], <span class="number">0</span>, <span class="number">0</span>]] + [[<span class="number">0</span>] * <span class="number">3</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n - <span class="number">1</span>)]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n):</span><br><span class="line">            f[i][<span class="number">0</span>] = <span class="built_in">max</span>(f[i - <span class="number">1</span>][<span class="number">0</span>], f[i - <span class="number">1</span>][<span class="number">2</span>] - prices[i])</span><br><span class="line">            f[i][<span class="number">1</span>] = f[i - <span class="number">1</span>][<span class="number">0</span>] + prices[i]</span><br><span class="line">            f[i][<span class="number">2</span>] = <span class="built_in">max</span>(f[i - <span class="number">1</span>][<span class="number">1</span>], f[i - <span class="number">1</span>][<span class="number">2</span>])</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(f[n - <span class="number">1</span>][<span class="number">1</span>], f[n - <span class="number">1</span>][<span class="number">2</span>])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>因为每一天的收益都只与前一天有关，所以 <code>f</code> 数组无用的可以省略掉</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">maxProfit</span>(<span class="params">self, prices: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> prices:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        </span><br><span class="line">        n = <span class="built_in">len</span>(prices)</span><br><span class="line">        f0, f1, f2 = -prices[<span class="number">0</span>], <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n):</span><br><span class="line">            newf0 = <span class="built_in">max</span>(f0, f2 - prices[i])</span><br><span class="line">            newf1 = f0 + prices[i]</span><br><span class="line">            newf2 = <span class="built_in">max</span>(f1, f2)</span><br><span class="line">            f0, f1, f2 = newf0, newf1, newf2</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(f1, f2)</span><br></pre></td></tr></table></figure>
+
+<h2 id="712-两个字符串的最小ASCII删除和"><a href="#712-两个字符串的最小ASCII删除和" class="headerlink" title="712. 两个字符串的最小ASCII删除和"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-ascii-delete-sum-for-two-strings/">712. 两个字符串的最小ASCII删除和</a></h2><p>给定两个字符串<code>s1</code> 和 <code>s2</code>，返回 <em>使两个字符串相等所需删除字符的 <strong>ASCII</strong> 值的最小和</em> 。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: s1 = &quot;sea&quot;, s2 = &quot;eat&quot;</span><br><span class="line">输出: 231</span><br><span class="line">解释: 在 &quot;sea&quot; 中删除 &quot;s&quot; 并将 &quot;s&quot; 的值(115)加入总和。</span><br><span class="line">在 &quot;eat&quot; 中删除 &quot;t&quot; 并将 116 加入总和。</span><br><span class="line">结束时，两个字符串相等，115 + 116 = 231 就是符合条件的最小和。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入: s1 = &quot;delete&quot;, s2 = &quot;leet&quot;</span><br><span class="line">输出: 403</span><br><span class="line">解释: 在 &quot;delete&quot; 中删除 &quot;dee&quot; 字符串变成 &quot;let&quot;，</span><br><span class="line">将 100[d]+101[e]+101[e] 加入总和。在 &quot;leet&quot; 中删除 &quot;e&quot; 将 101[e] 加入总和。</span><br><span class="line">结束时，两个字符串都等于 &quot;let&quot;，结果即为 100+101+101+101 = 403 。</span><br><span class="line">如果改为将两个字符串转换为 &quot;lee&quot; 或 &quot;eet&quot;，我们会得到 433 或 417 的结果，比答案更大。</span><br></pre></td></tr></table></figure>
+
+<p>这个题实在不会，希望以后看到回想起来重做一次。 直接复制一下官方解答吧</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    public <span class="built_in">int</span> minimumDeleteSum(String s1, String s2) &#123;</span><br><span class="line">        <span class="built_in">int</span> m = s1.length(), n = s2.length();</span><br><span class="line">        <span class="built_in">int</span>[][] dp = new <span class="built_in">int</span>[m + <span class="number">1</span>][n + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = dp[i - <span class="number">1</span>][<span class="number">0</span>] + s1.codePointAt(i - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">            dp[<span class="number">0</span>][j] = dp[<span class="number">0</span>][j - <span class="number">1</span>] + s2.codePointAt(j - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">            <span class="built_in">int</span> code1 = s1.codePointAt(i - <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="built_in">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">                <span class="built_in">int</span> code2 = s2.codePointAt(j - <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">if</span> (code1 == code2) &#123;</span><br><span class="line">                    dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    dp[i][j] = Math.<span class="built_in">min</span>(dp[i - <span class="number">1</span>][j] + code1, dp[i][j - <span class="number">1</span>] + code2);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[m][n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">作者：力扣官方题解</span><br><span class="line">链接：https://leetcode.cn/problems/minimum-<span class="built_in">ascii</span>-delete-<span class="built_in">sum</span>-<span class="keyword">for</span>-two-strings/solutions/<span class="number">1712998</span>/liang-ge-zi-fu-chuan-de-zui-xiao-asciish-xllf/</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
+
+<h2 id="1218-最长定差子序列"><a href="#1218-最长定差子序列" class="headerlink" title="1218. 最长定差子序列"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-arithmetic-subsequence-of-given-difference/">1218. 最长定差子序列</a></h2><p>给你一个整数数组 <code>arr</code> 和一个整数 <code>difference</code>，请你找出并返回 <code>arr</code> 中最长等差子序列的长度，该子序列中相邻元素之间的差等于 <code>difference</code> 。</p>
+<p><strong>子序列</strong> 是指在不改变其余元素顺序的情况下，通过删除一些元素或不删除任何元素而从 <code>arr</code> 派生出来的序列。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：arr = [1,2,3,4], difference = 1</span><br><span class="line">输出：4</span><br><span class="line">解释：最长的等差子序列是 [1,2,3,4]。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：arr = [1,3,5,7], difference = 1</span><br><span class="line">输出：1</span><br><span class="line">解释：最长的等差子序列是任意单个元素。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：arr = [1,5,7,8,5,3,4,2,1], difference = -2</span><br><span class="line">输出：4</span><br><span class="line">解释：最长的等差子序列是 [7,5,3,1]。</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= arr.length &lt;= 105</code></li>
+<li><code>-104 &lt;= arr[i], difference &lt;= 104</code></li>
+</ul>
+<p><strong>解题思路：</strong></p>
+<p>将问题转化为 以<code>arr[i]</code>为结尾的最长等差子序列的长度，最后从这些中选出最大的值，即为最终结果。</p>
+<p>令 <code>dp[i]</code> 表示以 <code>arr[i]</code> 为结尾的最长的等差子序列的长度，我们可以在 <code>arr[i]</code> 左侧找到满足 <code>arr[j]=arr[i]−d</code> 的元素，将 <code>arr[i]</code> 加到以 <code>arr[j]</code> 为结尾的最长的等差子序列的末尾，这样可以递推地从 <code>dp[j]</code> 计算出 <code>dp[i]</code>。由于我们是从左往右遍历 <code>arr</code> 的，对于两个相同的元素，下标较大的元素对应的 <code>dp</code> 值不会小于下标较小的元素对应的 <code>dp</code> 值，因此下标<code>j</code> 可以取满足 <code>j&lt;i</code> 且 <code>arr[j]=arr[i]−d</code> 的所有下标的最大值。故有转移方程<br>$$<br>dp[i]=dp[j]+1<br>$$<br>由于我们总是在左侧找一个最近的等于<code>arr[i]−d</code> 元素并取其对应 <code>dp</code> 值，因此我们直接用<code>dp[v]</code> 表示以 <code>v</code> 为结尾的最长的等差子序列的长度，这样 <code>dp[v−d]</code> 就是我们要找的左侧元素对应的最长的等差子序列的长度，因此转移方程可以改为<br>$$<br>dp[v]=dp[v−d]+1<br>$$<br>最后答案为<code>max&#123;dp&#125;</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">longestSubsequence</span>(<span class="params">self, arr: <span class="type">List</span>[<span class="built_in">int</span>], difference: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        dp = defaultdict(<span class="built_in">int</span>)</span><br><span class="line">        <span class="keyword">for</span> v <span class="keyword">in</span> arr:</span><br><span class="line">            dp[v] = dp[v - difference] + <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(dp.values())</span><br></pre></td></tr></table></figure>
+
+<h2 id="790-多米诺和托米诺平铺"><a href="#790-多米诺和托米诺平铺" class="headerlink" title="790.多米诺和托米诺平铺"></a>790.多米诺和托米诺平铺</h2><p>有两种形状的瓷砖：一种是 <code>2 x 1</code> 的多米诺形，另一种是形如 “L” 的托米诺形。两种形状都可以旋转。</p>
+<p><img src="https://assets.leetcode.com/uploads/2021/07/15/lc-domino.jpg" alt="img"></p>
+<p>给定整数 n ，返回可以平铺 <code>2 x n</code> 的面板的方法的数量。<strong>返回对</strong> <code>109 + 7</code> <strong>取模</strong> 的值。</p>
+<p>平铺指的是每个正方形都必须有瓷砖覆盖。两个平铺不同，当且仅当面板上有四个方向上的相邻单元中的两个，使得恰好有一个平铺有一个瓷砖占据两个正方形。</p>
+<p><strong>示例 1:</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2021/07/15/lc-domino1.jpg" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: n = 3</span><br><span class="line">输出: 5</span><br><span class="line">解释: 五种不同的方法如上所示。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: n = 1</span><br><span class="line">输出: 1</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= n &lt;= 1000</code></li>
+</ul>
+<p>官方解析实在是通俗不易懂，好在找到了一个通俗易懂的解析版本–<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/domino-and-tromino-tiling/solutions/1963121/xiao-bai-yi-dong-de-guan-fang-ti-jie-jie-7tjg/">智商局局长</a></p>
+<p><strong>解析</strong></p>
+<p>我们将平铺看成一个从左到右铺上瓷砖的过程，第 i 列之前都被瓷砖覆盖，在第 i 列之后都没有被瓷砖覆盖。那么第 i 列的正方形有四种被覆盖的情况：</p>
+<p>一个正方形都没有被覆盖，记为状态 0；<br>只有上方的正方形被覆盖，记为状态 1；<br>只有下方的正方形被覆盖，记为状态 2；<br>上下两个正方形都被覆盖，记为状态 3。</p>
+<p>然后，忘了官方题解的图中那个以四块正方形组成的大正方形，只聚焦于两个正方形组成的第i列。</p>
+<p><img src="https://assets.leetcode-cn.com/solution-static/790/1.png"></p>
+<p>我们使用dp[i][n]来表示将瓷砖铺成第i列为n状态的所有方法。</p>
+<p>如果第i列的状态为0，即一个瓷砖都没有，因为第i列之前都被瓷砖覆盖了，所以其状态是与第i-1列的3状态相同的，即dp[i][0]=dp[i-1][3]。</p>
+<p>如果第i列的状态为1，即只有上方有一个瓷砖，要想成为这种情况，有两种方式：在第i-1为2状态下时，横着铺一块多米诺形瓷砖，或者在i第i-1列为0状态下时铺一个托米诺形瓷砖，即dp[i][1]=dp[i-1][0]+dp[i-1][2]。</p>
+<p>如果第i列的状态为2，即只有下方的一个瓷砖，与状态为1同理。有两种方式：在第i-1为1状态下时，横着铺一块多米诺形瓷砖，或者在i第i-1列为0状态下时铺一个托米诺形瓷砖，即dp[i][1]=dp[i-1][0]+dp[i-1][1]。</p>
+<p>如果第i列的状态为3，即第i列已经铺满了瓷砖，此时需要在第i-1列的3状态下竖着铺一块多米诺形瓷砖，或者在第i-1列的1、2状态下铺一个托米诺形瓷砖，dp[i][3]=dp[i-1][0]+dp[i-1][1]+dp[i-1][2]+dp[i-1][3]</p>
+<p>不难注意到，当i=0时，i-1会越界，所以需要为i=0时专门赋值。dp[i][0]是一块砖都没有，自然为0；因为多米诺形瓷砖与托米诺形瓷砖都无法在第0列铺出一个瓷砖，所以dp[i][1]与dp[i][2]也是0；使用多米诺形瓷砖时可以铺满第0列，所以dp[i][3]的值为1。</p>
+<p>最后是官方题解的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">numTilings</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        MOD = <span class="number">10</span> ** <span class="number">9</span> + <span class="number">7</span></span><br><span class="line">        dp = [[<span class="number">0</span>] * <span class="number">4</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n + <span class="number">1</span>)]</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">3</span>] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">            dp[i][<span class="number">0</span>] = dp[i - <span class="number">1</span>][<span class="number">3</span>]</span><br><span class="line">            dp[i][<span class="number">1</span>] = (dp[i - <span class="number">1</span>][<span class="number">0</span>] + dp[i - <span class="number">1</span>][<span class="number">2</span>]) % MOD</span><br><span class="line">            dp[i][<span class="number">2</span>] = (dp[i - <span class="number">1</span>][<span class="number">0</span>] + dp[i - <span class="number">1</span>][<span class="number">1</span>]) % MOD</span><br><span class="line">            dp[i][<span class="number">3</span>] = (((dp[i - <span class="number">1</span>][<span class="number">0</span>] + dp[i - <span class="number">1</span>][<span class="number">1</span>]) % MOD + dp[i - <span class="number">1</span>][<span class="number">2</span>]) % MOD + dp[i - <span class="number">1</span>][<span class="number">3</span>]) % MOD</span><br><span class="line">        <span class="keyword">return</span> dp[n][<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">作者：力扣官方题解</span><br><span class="line">链接：https://leetcode.cn/problems/domino-<span class="keyword">and</span>-tromino-tiling/solutions/<span class="number">1962465</span>/duo-mi-nuo-he-tuo-mi-nuo-ping-pu-by-leet-7n0j/</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="132模式"><a href="#132模式" class="headerlink" title="132模式"></a>132模式</h1><h2 id="456-132-模式"><a href="#456-132-模式" class="headerlink" title="456. 132 模式"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/132-pattern/">456. 132 模式</a></h2><p>给你一个整数数组 <code>nums</code> ，数组中共有 <code>n</code> 个整数。<strong>132 模式的子序列</strong> 由三个整数 <code>nums[i]</code>、<code>nums[j]</code> 和 <code>nums[k]</code> 组成，并同时满足：<code>i &lt; j &lt; k</code> 和 <code>nums[i] &lt; nums[k] &lt; nums[j]</code> 。</p>
+<p>如果 <code>nums</code> 中存在 <strong>132 模式的子序列</strong> ，返回 <code>true</code> ；否则，返回 <code>false</code> 。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,3,4]</span><br><span class="line">输出：false</span><br><span class="line">解释：序列中不存在 132 模式的子序列。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [3,1,4,2]</span><br><span class="line">输出：true</span><br><span class="line">解释：序列中有 1 个 132 模式的子序列： [1, 4, 2] 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [-1,3,2,0]</span><br><span class="line">输出：true</span><br><span class="line">解释：序列中有 3 个 132 模式的的子序列：[-1, 3, 2]、[-1, 3, 0] 和 [-1, 2, 0] 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>一：枚举 3</strong></p>
+<p>  3 的位置处于 1 和 2 之间，将数组分为 3 块，第一块为 1 维护的数组 <code>nums[0...j-1]</code>，第二块为 <code>nums[j]</code>,第三块为<code>nums[j+1...n-1]</code>。</p>
+<p>因为 1 是 132 模式中的最小值，所以第一块只要每次维护好最小值 <code>a[i]</code>。第三块需要对元素进行排序，维护其为一个有序集合。当确定 <code>a[i]</code>与<code>a[j]</code>时，找到在其中比<code>a[i]</code>大的最小值，然后对比<code>a[j]</code>与<code>a[k]</code>的大小，如果符合 132 模式则返回为 True ，否则从第三块中移除<code>num[j+1]</code>(下一轮被枚举的j)，并维护第一块的最小值。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">find132pattern</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        n = <span class="built_in">len</span>(nums)</span><br><span class="line">        <span class="keyword">if</span> n &lt; <span class="number">3</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 左侧最小值</span></span><br><span class="line">        left_min = nums[<span class="number">0</span>]</span><br><span class="line">        <span class="comment"># 右侧所有元素</span></span><br><span class="line">        right_all = SortedList(nums[<span class="number">2</span>:])</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n - <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> left_min &lt; nums[j]:</span><br><span class="line">                index = right_all.bisect_right(left_min)</span><br><span class="line">                <span class="keyword">if</span> index &lt; <span class="built_in">len</span>(right_all) <span class="keyword">and</span> right_all[index] &lt; nums[j]:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">            left_min = <span class="built_in">min</span>(left_min, nums[j])</span><br><span class="line">            right_all.remove(nums[j + <span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>二：枚举1</p>
+<p>主要思路：从数组右面往左枚举，在 132 模式中，如果 <code>3 &gt; 2</code>, <code>2 &gt; 1</code>那么 <code>3 &gt; 1</code>,在枚举的时候，使用单调栈的方式。</p>
+<blockquote>
+<p>单调栈：从栈底到栈顶的元素都是严格单调递减或递增的。当给定阈值 x<em>x</em> 时，我们只需要不断地弹出栈顶的元素，直到栈为空或者 x<em>x</em> 严格小于栈顶元素。此时我们再将 x<em>x</em> 入栈，这样就维护了栈的单调性。</p>
+</blockquote>
+<ul>
+<li><p>我们用单调栈维护所有可以作为 2的候选元素。初始时，单调栈中只有唯一的元素<code>a[n−1]</code>。我们还需要使用一个变量 <code>max_k</code> 记录所有可以真正作为 2 的元素的最大值；</p>
+</li>
+<li><p>随后我们从 <code>n−2</code> 开始从右到左枚举元素 <code>a[i]</code>：</p>
+</li>
+<li><p>首先我们判断 <code>a[i]</code> 是否可以作为 1。如果 <code>a[i]&lt;max_k</code>，那么它就可以作为 1，我们就找到了一组满足 132 模式的三元组；</p>
+</li>
+<li><p>随后我们判断 <code>a[i]</code> 是否可以作为 3，以此找出哪些可以真正作为 2 的元素。我们将 <code>a[i]</code> 不断地与单调栈栈顶的元素进行比较，如果 <code>a[i]</code> 较大，那么栈顶元素可以真正作为 2，将其弹出并更新 <code>max_k</code>；</p>
+</li>
+<li><p>最后我们将 <code>a[i]</code> 作为 2 的候选元素放入单调栈中。这里可以进行一个优化，即如果 <code>a[i]≤max_k</code>，那么我们也没有必要将 <code>a[i]</code> 放入栈中，因为即使它在未来被弹出，也不会将 <code>max_k</code> 更新为更大的值。</p>
+</li>
+<li><p>在枚举完所有的元素后，如果仍未找到满足 <code>132</code> 模式的三元组，那就说明其不存在。</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">public:</span><br><span class="line">    <span class="built_in">bool</span> find132pattern(vector&lt;<span class="built_in">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        <span class="built_in">int</span> n = nums.size();</span><br><span class="line">        stack&lt;<span class="built_in">int</span>&gt; candidate_k;</span><br><span class="line">        candidate_k.push(nums[n - <span class="number">1</span>]);</span><br><span class="line">        <span class="built_in">int</span> max_k = INT_MIN;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = n - <span class="number">2</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] &lt; max_k) &#123;</span><br><span class="line">                <span class="keyword">return</span> true;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span> (!candidate_k.empty() &amp;&amp; nums[i] &gt; candidate_k.top()) &#123;</span><br><span class="line">                max_k = candidate_k.top();</span><br><span class="line">                candidate_k.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] &gt; max_k) &#123;</span><br><span class="line">                candidate_k.push(nums[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h1><h2 id="739-每日温度"><a href="#739-每日温度" class="headerlink" title="739. 每日温度"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/daily-temperatures/">739. 每日温度</a></h2><p>给定一个整数数组 <code>temperatures</code> ，表示每天的温度，返回一个数组 <code>answer</code> ，其中 <code>answer[i]</code> 是指对于第 <code>i</code> 天，下一个更高温度出现在几天后。如果气温在这之后都不会升高，请在该位置用 <code>0</code> 来代替。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: temperatures = [73,74,75,71,69,72,76,73]</span><br><span class="line">输出: [1,1,4,2,1,1,0,0]</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: temperatures = [30,40,50,60]</span><br><span class="line">输出: [1,1,1,0]</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: temperatures = [30,60,90]</span><br><span class="line">输出: [1,1,0]</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= temperatures.length &lt;= 105</code></li>
+<li><code>30 &lt;= temperatures[i] &lt;= 100</code></li>
+</ul>
+<p><strong>一：暴力解题</strong></p>
+<p>从提示中我们可以看到，温度是在 30-100 之间的，所以我们只要维护一个温度列表，反向遍历温度列表，每当温度出现便更新一次，这样温度列表里一直是最近的温度下标。</p>
+<p>反向遍历温度列表。对于每个元素 <code>temperatures[i]</code>，在数组 <code>next</code> 中找到从 <code>temperatures[i] + 1</code> 到 100 中每个温度第一次出现的下标，将其中的最小下标记为 <code>warmerIndex</code>，则 <code>warmerIndex</code> 为下一次温度比当天高的下标。如果 <code>warmerIndex</code> 不为无穷大，则 <code>warmerIndex - i</code> 即为下一次温度比当天高的等待天数，最后令 <code>next[temperatures[i]] = i</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">dailyTemperatures</span>(<span class="params">self, temperatures: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        n = <span class="built_in">len</span>(temperatures)</span><br><span class="line">        ans, nxt, big = [<span class="number">0</span>] * n, <span class="built_in">dict</span>(), <span class="number">10</span>**<span class="number">9</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n - <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">            warmer_index = <span class="built_in">min</span>(nxt.get(t, big) <span class="keyword">for</span> t <span class="keyword">in</span> <span class="built_in">range</span>(temperatures[i] + <span class="number">1</span>, <span class="number">102</span>))</span><br><span class="line">            <span class="keyword">if</span> warmer_index != big:</span><br><span class="line">                ans[i] = warmer_index - i</span><br><span class="line">            nxt[temperatures[i]] = i</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<p><strong>二：单调栈</strong></p>
+<p>维护一个存储温度和下标的单调栈，栈底到栈顶依次单调递减。如果一个下标仍存在单调栈里，说明目前尚未找到温度更高的下标。</p>
+<p>正向遍历温度列表，如果单调栈里为空，则直接入栈。如果单调栈里元素不为空，循环比较当前元素<code>temperatures[i]</code>与栈顶的温度大小，如果大于栈顶元素的温度，则栈顶元素出栈，并修改将栈顶元素对应的<code>ans</code>等待天数为<code>i-stack[-1][0]</code>,如果小于栈顶元素的温度，则当前元素入栈。</p>
+<p>由于单调栈满足从栈底到栈顶元素对应的温度递减，因此每次有元素进栈时，会将温度更低的元素全部移除，并更新出栈元素对应的等待天数，这样可以确保等待天数一定是最小的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">dailyTemperatures</span>(<span class="params">self, temperatures: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        ans = [<span class="number">0</span>] * <span class="built_in">len</span>(temperatures)</span><br><span class="line">        stack = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(temperatures)):</span><br><span class="line">            <span class="keyword">if</span> stack:</span><br><span class="line">                <span class="keyword">while</span> stack <span class="keyword">and</span> temperatures[i] &gt; stack[-<span class="number">1</span>][<span class="number">1</span>]:</span><br><span class="line">                    ans[stack[-<span class="number">1</span>][<span class="number">0</span>]] = i - stack[-<span class="number">1</span>][<span class="number">0</span>]</span><br><span class="line">                    stack.pop()</span><br><span class="line">                stack.append([i, temperatures[i]])</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                stack.append([i, temperatures[i]])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://www.xljzt.top">XLJZT</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.xljzt.top/2022/11/12/009_LeetCode001/">https://www.xljzt.top/2022/11/12/009_LeetCode001/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.xljzt.top" target="_blank">XLJZT</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Leetcode/">Leetcode</a><a class="post-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/">算法</a></div><div class="post_share"><div class="social-share" data-image="https://assets.leetcode.com/uploads/2021/07/15/lc-domino1.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/10/26/008_Ubuntu/"><img class="next-cover" src="https://gitlab.com/XLJZT/img/-/raw/main/blog/pictures/2022/10/28_16_34_28_%E5%9B%BE%E7%89%871.png" onerror="onerror=null;src='https://gitlab.com/XLJZT/img/-/raw/main/blog/index.gif'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Ubuntu命令学习及大数据平台安装问题</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://gitlab.com/XLJZT/img/-/raw/main/blog/head.jpg" onerror="this.onerror=null;this.src='https://gitlab.com/XLJZT/img/-/raw/main/blog/index.gif'" alt="avatar"/></div><div class="author-info__name">XLJZT</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/XLJZT"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/XLJZT" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:w_sunday@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98"><span class="toc-text">动态规划问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#309-%E6%9C%80%E4%BD%B3%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E6%97%B6%E6%9C%BA%E5%90%AB%E5%86%B7%E5%86%BB%E6%9C%9F"><span class="toc-text">309. 最佳买卖股票时机含冷冻期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#712-%E4%B8%A4%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8FASCII%E5%88%A0%E9%99%A4%E5%92%8C"><span class="toc-text">712. 两个字符串的最小ASCII删除和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1218-%E6%9C%80%E9%95%BF%E5%AE%9A%E5%B7%AE%E5%AD%90%E5%BA%8F%E5%88%97"><span class="toc-text">1218. 最长定差子序列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#790-%E5%A4%9A%E7%B1%B3%E8%AF%BA%E5%92%8C%E6%89%98%E7%B1%B3%E8%AF%BA%E5%B9%B3%E9%93%BA"><span class="toc-text">790.多米诺和托米诺平铺</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#132%E6%A8%A1%E5%BC%8F"><span class="toc-text">132模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#456-132-%E6%A8%A1%E5%BC%8F"><span class="toc-text">456. 132 模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88"><span class="toc-text">单调栈</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#739-%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6"><span class="toc-text">739. 每日温度</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/11/12/009_LeetCode001/" title="Leetcode刷题折磨记录"><img src="https://assets.leetcode.com/uploads/2021/07/15/lc-domino1.jpg" onerror="this.onerror=null;this.src='https://gitlab.com/XLJZT/img/-/raw/main/blog/index.gif'" alt="Leetcode刷题折磨记录"/></a><div class="content"><a class="title" href="/2022/11/12/009_LeetCode001/" title="Leetcode刷题折磨记录">Leetcode刷题折磨记录</a><time datetime="2022-11-11T16:00:00.000Z" title="发表于 2022-11-12 00:00:00">2022-11-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/26/008_Ubuntu/" title="Ubuntu命令学习及大数据平台安装问题"><img src="https://gitlab.com/XLJZT/img/-/raw/main/blog/pictures/2022/10/28_16_34_28_%E5%9B%BE%E7%89%871.png" onerror="this.onerror=null;this.src='https://gitlab.com/XLJZT/img/-/raw/main/blog/index.gif'" alt="Ubuntu命令学习及大数据平台安装问题"/></a><div class="content"><a class="title" href="/2022/10/26/008_Ubuntu/" title="Ubuntu命令学习及大数据平台安装问题">Ubuntu命令学习及大数据平台安装问题</a><time datetime="2022-10-25T16:00:00.000Z" title="发表于 2022-10-26 00:00:00">2022-10-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/24/006_ThirdPersonCharacter/" title="第三人称视角摄像机和Ai跟随"><img src="https://gitlab.com/XLJZT/img/-/raw/main/blog/006_Third_006.png" onerror="this.onerror=null;this.src='https://gitlab.com/XLJZT/img/-/raw/main/blog/index.gif'" alt="第三人称视角摄像机和Ai跟随"/></a><div class="content"><a class="title" href="/2022/07/24/006_ThirdPersonCharacter/" title="第三人称视角摄像机和Ai跟随">第三人称视角摄像机和Ai跟随</a><time datetime="2022-07-23T16:00:00.000Z" title="发表于 2022-07-24 00:00:00">2022-07-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/20/005_Mishidao/" title="迷失岛面试题"><img src="https://gitlab.com/XLJZT/img/-/raw/main/blog/image-20220620135717244.png" onerror="this.onerror=null;this.src='https://gitlab.com/XLJZT/img/-/raw/main/blog/index.gif'" alt="迷失岛面试题"/></a><div class="content"><a class="title" href="/2022/06/20/005_Mishidao/" title="迷失岛面试题">迷失岛面试题</a><time datetime="2022-06-19T16:00:00.000Z" title="发表于 2022-06-20 00:00:00">2022-06-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/04/004_Dialog/" title="对话系统——Dialog System"><img src="https://gitlab.com/XLJZT/img/-/raw/main/blog/004.png" onerror="this.onerror=null;this.src='https://gitlab.com/XLJZT/img/-/raw/main/blog/index.gif'" alt="对话系统——Dialog System"/></a><div class="content"><a class="title" href="/2022/06/04/004_Dialog/" title="对话系统——Dialog System">对话系统——Dialog System</a><time datetime="2022-06-03T16:00:00.000Z" title="发表于 2022-06-04 00:00:00">2022-06-04</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By XLJZT</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
