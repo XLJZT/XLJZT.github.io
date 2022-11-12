@@ -5,7 +5,6 @@ date: 2022-10-26
 top_image: https://gitlab.com/XLJZT/img/-/raw/main/blog/pictures/2022/10/28_16_34_28_%E5%9B%BE%E7%89%871.png
 cover: https://gitlab.com/XLJZT/img/-/raw/main/blog/pictures/2022/10/28_16_34_28_%E5%9B%BE%E7%89%871.png
 categories: 
-- Ubuntu
 - Hadoop
 tag: 
 - Ubuntu
