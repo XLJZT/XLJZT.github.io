@@ -275,7 +275,7 @@ class Solution:
 
 然后，忘了官方题解的图中那个以四块正方形组成的大正方形，只聚焦于两个正方形组成的第i列。
 
-![](https://assets.leetcode-cn.com/solution-static/790/1.png)
+![image-20221112102953771](https://gitlab.com/XLJZT/img/-/raw/main/blog/pictures/2022/11/12_10_29_57_image-20221112102953771.png)
 
 我们使用dp\[i][n]来表示将瓷砖铺成第i列为n状态的所有方法。
 
