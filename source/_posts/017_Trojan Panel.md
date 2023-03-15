@@ -1,0 +1,292 @@
+---
+title: Trojan Panel
+description: Trojan Panel
+date: 2021-1-10
+top_image: /img/
+cover: /img/
+categories: 
+- Trojan Panel
+tag: 
+- Trojan Panel
+
+
+---
+
+建议的安装顺序: [安装网络加速](https://trojanpanel.github.io/tutorial/performance-tuning.html#网络加速) > 安装Trojan Panel > 安装Trojan Panel Core
+
+# 网络加速
+
+ [一键安装最新内核并开启 BBR 脚本](https://teddysun.com/489.html)
+
+使用root用户登录，运行以下命令：
+
+```bsh
+wget --no-check-certificate -O /opt/bbr.sh https://github.com/teddysun/across/raw/master/bbr.sh
+chmod 755 /opt/bbr.sh
+/opt/bbr.sh
+```
+
+安装完成后，脚本会提示需要重启 VPS，输入 y 并回车后重启。
+重启完成后，进入 VPS，验证一下是否成功安装最新内核并开启 TCP BBR，输入以下检查：
+No.1
+
+```bsh
+uname -r
+```
+
+查看内核版本，显示为新版内核就表示 OK 了。
+No.2
+
+```bsh
+sysctl net.ipv4.tcp_available_congestion_control
+```
+
+返回值一般为：
+
+```bsh
+net.ipv4.tcp_available_congestion_control = bbr cubic reno
+```
+
+或者：
+
+```bsh
+net.ipv4.tcp_available_congestion_control = reno cubic bbr
+```
+
+No.3
+
+```bsh
+sysctl net.ipv4.tcp_congestion_control
+```
+
+返回值一般为：
+
+```bsh
+net.ipv4.tcp_congestion_control = bbr
+```
+
+No.4
+
+```bsh
+sysctl net.core.default_qdisc
+```
+
+返回值一般为：
+
+```bsh
+net.core.default_qdisc = fq
+```
+
+No.5
+
+```bsh
+lsmod | grep bbr
+```
+
+返回值有 tcp_bbr 模块即说明 bbr 已启动。比如：
+
+```bsh
+tcp_bbr                20480  3
+```
+
+注意：并不是所有的 VPS 都会有此返回值，若没有也属正常。
+
+### 特别说明
+
+如果你使用的是 Google Cloud Platform （GCP）更换内核，有时会遇到重启后，整个磁盘变为只读的情况。只需执行以下命令即可恢复：
+
+```bsh
+mount -o remount rw /
+```
+
+ 
+
+# 自动安装教程
+
+[Trojan Panel](https://trojanpanel.github.io/tutorial/installation.html#%E5%AE%89%E8%A3%85trojan-panel) 网站
+
+## 准备
+
+#### 系统要求
+
+系统支持: CentOS 7+/Ubuntu 18+/Debian 10+
+
+处理器架构: `linux/386` `linux/amd64` `liunx/v6` `linux/v7` `linux/arm64` `linux/ppc64le` `linux/s390x`
+
+内存要求: ≥1G
+
+#### 相关端口
+
+| 端口 | 描述             |
+| ---- | ---------------- |
+| 80   | 伪装Web          |
+| 8863 | Caddy转发        |
+| 8888 | Trojan Panel前端 |
+| 9507 | MariaDB          |
+| 6378 | Redis            |
+| 8100 | gRPC端口         |
+
+Trojan Panel服务器需开放以下端口: `80` `8863` `8888`，Trojan Panel Core服务器需要开放：`8100`。
+
+如果使用的服务器控制面板有防火墙设置需要自己在控制面板自行开放以上端口。
+
+如果没有没有远程节点，尽量不要开放`9507`和`6378`端口。
+
+#### 注意
+
+1. 控制面板和节点都推荐部署在**国外服务器**上，否则会由于网络问题使用一键安装脚本会因为远程下载文件超时报错。
+
+2. 提前准备一个解析到服务的**二级域名**。
+
+3. **数据库和Redis的密码尽量设置复杂**（数字+大小写字母+特殊字符），否则假如开放了对应端口，则存在被撞库的安全风险。
+
+4. 建议的安装顺序: [安装网络加速](https://trojanpanel.github.io/tutorial/performance-tuning.html#网络加速) > 安装Trojan Panel > 安装Trojan Panel Core
+
+   建议在脚本运行中需要手动输入的部分，如果没有特殊需求或者不知道这个选项是干什么的，**除数据库密码和Redis密码自定义以外，其他默认即可**。
+
+5. 如果是远程多节点的情况，**节点服务器只需要安装一次Trojan Panel Core**，在面板界面才可以操作远程服务器从而远程自动化管理节点。
+
+6. 如果使用Caddy自动申请/续签证书，**需要开放Caddy端口（默认80）并且保证Caddy端口没有被其他进程占用**。
+
+## 一键安装脚本
+
+联机版
+
+```shell
+source <(curl -L https://github.com/trojanpanel/install-script/raw/main/install_script.sh)
+```
+
+单机版（推荐）
+
+```shell
+source <(curl -L https://github.com/trojanpanel/install-script/raw/main/install_script_standalone.sh)
+```
+
+
+
+## 安装Trojan Panel
+
+- 请输入Caddy的端口(默认:80)
+
+默认即可，除非80端口被墙或者被其他进程占用。
+
+- 请输入Caddy的转发端口(用于申请证书,默认:8863)
+
+默认即可，除非8863端口被墙。
+
+- 请输入你的域名(必填)
+
+输入你提前解析到本机的域名。
+
+- 请选择设置证书的方式?(1/自动申请和续签证书 2/手动设置证书路径 默认:1/自动申请和续签证书)
+
+推荐自动申请和续签证书，如果自己有证书或者自动申请和续签证书失败可以选择手动设置证书路径（24小时内申请2次以上可能会导致自动申请证书失败，如果搭建频繁，建议选择手动设置证书路径）。
+
+- 请输入你的邮箱(用于申请证书,默认:`123456@qq.com`)
+
+默认即可，或输入一个合法的邮箱地址，此选项用于申请证书。
+
+- 请输入证书的.crt文件路径(必填)
+
+使用.crt文件的绝对路径，例如：`/root/www.google.com.crt`
+
+- 请输入证书的.key文件路径(必填)
+
+使用.key文件的绝对路径，例如：`/root/www.google.com.key`
+
+- 请输入数据库的用户名(默认:root)
+
+默认即可，除非有自定义数据库用户的需求。
+
+- 请输入数据库的密码(必填)
+
+输入一个较为复杂且你能记得住的密码。
+
+- 请输入Redis的密码(必填)
+
+输入一个较为复杂且你能记得住的密码。
+
+- 请输入数据库的IP地址(默认:本地数据库)
+
+如果数据库安装在本机则默认即可，如果数据库安装在其他服务器这里填远程服务器的IP地址。
+
+- 请输入数据库的端口(默认:本地数据库端口)
+
+如果数据库安装在本机则默认即可，如果数据库安装在其他服务器这里填远程服务器的数据库端口。
+
+- 请输入数据库的用户名(默认:root)
+
+默认即可，除非有自定义数据库用户的需求。
+
+- 请输入数据库的密码(必填)
+
+如果数据库安装在本机则填写本机数据库密码，如果数据库安装在其他服务器这里填远程服务器的数据库密码。
+
+- 请输入Redis的IP地址(默认:本机Redis)
+
+如果Redis安装在本机则默认即可，如果Redis安装在其他服务器这里填远程服务器的IP地址。
+
+- 请输入Redis的端口(默认:本机Redis端口)
+
+如果Redis安装在本机则默认即可，如果Redis安装在其他服务器这里填远程服务器的Redis端口。
+
+- 请输入Redis的密码(必填)
+
+如果Redis安装在本机则填写本机Redis密码，如果Redis安装在其他服务器这里填远程服务器的Redis密码。
+
+- 请输入Trojan Panel前端端口(默认:8888)
+
+默认即可，除非有自定义Trojan Panel前端端口的需求。
+
+- 请选择Trojan Panel前端是否开启https?(0/关闭 1/开启 默认:1/开启)
+
+默认即可，除非有自定义择Trojan Panel前端是否开启https的需求。如果开启https，则管理面板地址为`https://你的域名:端口`，如果未开启https，则管理面板地址为`http://你的域名:端口`。
+
+**提示**
+
+1. 安装结束后，访问**你的域名**如果是一个静态网页，说明已经安装成功。
+2. 安装成功后，Trojan Panel管理面板地址: `你的域名:8888` 系统管理员 默认用户名: `sysadmin` 默认密码: `123456` 请及时登陆管理面板修改密码。
+
+## 安装Trojan Panel Core
+
+- 请输入数据库的IP地址(默认:本地数据库)
+
+如果数据库安装在本机则默认即可，如果数据库安装在其他服务器这里填远程服务器的IP地址。
+
+- 请输入数据库的端口(默认:本地数据库端口)
+
+如果数据库安装在本机则默认即可，如果数据库安装在其他服务器这里填远程服务器的数据库端口。
+
+- 请输入数据库的用户名(默认:root)
+
+默认即可，除非有自定义数据库用户的需求。
+
+- 请输入数据库的密码(必填)
+
+如果数据库安装在本机则填写本机数据库密码，如果数据库安装在其他服务器这里填远程服务器的数据库密码。
+
+- 请输入数据库名称(默认:trojan_panel_db)
+
+默认即可，除非有自定义数据库名称的需求。
+
+- 请输入数据库的用户表名称(默认:account)
+
+默认即可，除非有自定义数据库的用户表的需求。
+
+- 请输入Redis的IP地址(默认:本机Redis)
+
+如果Redis安装在本机则默认即可，如果Redis安装在其他服务器这里填远程服务器的IP地址。
+
+- 请输入Redis的端口(默认:本机Redis端口)
+
+如果Redis安装在本机则默认即可，如果Redis安装在其他服务器这里填远程服务器的Redis端口。
+
+- 请输入Redis的密码(必填)
+
+如果Redis安装在本机则填写本机Redis密码，如果Redis安装在其他服务器这里填远程服务器的Redis密码。
+
+- 请输入API的端口(默认:8100)
+
+默认即可，除非8100端口被墙。
+
+> 记录于20230315
