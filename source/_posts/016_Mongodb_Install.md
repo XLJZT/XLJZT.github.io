@@ -6,7 +6,6 @@ top_image: https://gitlab.com/XLJZT/img/-/raw/main/blog/pictures/2023/03/12_10_2
 cover: https://gitlab.com/XLJZT/img/-/raw/main/blog/pictures/2023/03/12_10_20_41_image-20221125151939853.png
 categories: 
 - Ubuntu
-- Hadoop
 tag: 
 - Mongodb
 - Ubuntu
