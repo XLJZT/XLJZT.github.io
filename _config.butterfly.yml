@@ -86,7 +86,7 @@ avatar:
 disable_top_img: false
 
 # The banner image of home page
-index_img: https://gitlab.com/XLJZT/img/-/raw/main/blog/pictures/2022/11/20_14_44_36_hero-bg-2x.webp
+index_img: https://gitlab.com/XLJZT/img/-/raw/main/blog/pictures/2023/03/15_18_26_28_pexels-shawn-stutzman-1010496.jpg
 
 # If the banner of page not setting, it will show the top_img
 default_top_img: https://gitlab.com/XLJZT/img/-/raw/main/blog/pictures/2022/11/20_14_44_44_footer-galaxy.jpg
