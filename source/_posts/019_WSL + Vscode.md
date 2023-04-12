@@ -6,7 +6,8 @@ top_image: https://gitlab.com/XLJZT/img/-/raw/main/blog/pictures/2023/04/3_9_6_4
 cover: https://gitlab.com/XLJZT/img/-/raw/main/blog/pictures/2023/04/3_9_6_4_image-20230403090559374.png
 categories: 
 - Ubuntu
-- c++
+- C++
+- WSL
 tag: 
 - Ubuntu
 - c++
