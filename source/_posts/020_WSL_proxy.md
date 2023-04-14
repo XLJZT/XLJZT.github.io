@@ -5,7 +5,6 @@ date: 2023-4-12
 top_image: https://gitlab.com/XLJZT/img/-/raw/main/blog/pictures/2023/04/12_15_18_54_image-20230412151852465.png
 cover: https://gitlab.com/XLJZT/img/-/raw/main/blog/pictures/2023/04/12_15_18_54_image-20230412151852465.png
 categories: 
-- Ubuntu
 - WSL
 tag: 
 - Clash
