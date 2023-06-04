@@ -70,7 +70,7 @@ mixin:
        - https://dns.pub/dns-query
      fallback:
        - https://1.0.0.1/dns-query
-	   - https://8888.google/dns-query
+       - https://8888.google/dns-query
        - https://public.dns.iij.jp/dns-query
        - https://dns.twnic.tw/dns-query
      fallback-filter:
