@@ -11,7 +11,7 @@ menu:
   #   Music: /music/ || fas fa-music
   #   Movie: /movies/ || fas fa-video
   关于: /about/ || fas fa-heart
-  简历: /resume/ || fas fa-file
+  # 简历: /resume/ || fas fa-file
 
 # Code Blocks (代碼相關)
 # --------------------------------------
