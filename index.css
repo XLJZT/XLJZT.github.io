@@ -97,8 +97,8 @@ section.contact {
   text-align: right;
   float: right;
   width: 50%;
-  font-size: 15px;
-  line-height: 25px;
+  font-size: 16px;
+  line-height: 34px;
 }
 /* body */
 .content-bd {
@@ -112,14 +112,15 @@ section.contact {
 .content-bd .content-left,
 .content-bd .content-right {
   padding: 0 20px;
-  width: 50%;
+  padding-bottom: 40px;
+  /* width: 50%; */
 }
-.content-bd .content-left {
+/* .content-bd .content-left {
   float: left;
 }
 .content-bd .content-right {
   float: right;
-}
+} */
 .content-bd .section-content {
   line-height: 28px;
   color: #777;
@@ -341,7 +342,7 @@ footer .footer-link .iconfont:hover {
     text-align: center;
   }
 }
-@media screen and (max-width: 1260px) {
+/* @media screen and (max-width: 1260px) {
   .btn_wrap {
     left: auto;
     right: 8px;
@@ -350,7 +351,7 @@ footer .footer-link .iconfont:hover {
   .edit {
     display: none;
   }
-}
+} */
 @media screen and (max-width: 720px) {
   strong {
     padding: 1px 2px;
