@@ -1,7 +1,7 @@
 ---
 title: 数字孪生Camera基础功能
 description: 
-date: 2022-8-17
+date: 2023-8-17
 top_image: https://gitlab.com/XLJZT/img/-/raw/main/blog/pictures/2023/08/18_10_54_4_image-20230818105105275.png
 cover: https://gitlab.com/XLJZT/img/-/raw/main/blog/pictures/2023/08/18_10_54_4_image-20230818105105275.png
 categories: 
