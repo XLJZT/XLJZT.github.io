@@ -156,7 +156,7 @@ void ABasePlayerController::LeftMousePress()
 
 # 参考文章｜视频
 
-🌟UE4 ISM(实例化静态网格体)理解](https://zwcloud.net/#blog/112)
+🌟[UE4 ISM(实例化静态网格体)理解](https://zwcloud.net/#blog/112)
 
 [UE5使用ISM（InstanceStaticMesh）或HISM生成大量静态网格体提升渲染性能](https://www.bilibili.com/read/cv19015625)
 
