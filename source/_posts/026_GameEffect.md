@@ -69,6 +69,76 @@ Maginitude Calculation Type： 计算的类型
 
 > 图中的 Health = 10 ，是目标要修改的值，最后得到的值 7.26 就是 Health 拾取物品后的最终值。
 
+**当 Maginitude Calculation Type 为 Custome Caculation Class时**：
+
+创建新的 cpp 文件，继承与GameplayModMagnitudeCalculation。
+
+MMC_MaxHealth.h
+
+```c++
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameplayModMagnitudeCalculation.h"
+#include "MMC_MaxHealth.generated.h"
+
+/**
+ * 
+ */
+UCLASS()
+class AURAGAME_API UMMC_MaxHealth : public UGameplayModMagnitudeCalculation
+{
+	GENERATED_BODY()
+public:
+	UMMC_MaxHealth();
+
+	virtual float CalculateBaseMagnitude_Implementation(const FGameplayEffectSpec& Spec) const override;
+private:
+	FGameplayEffectAttributeCaptureDefinition VigorDef;
+};
+
+```
+
+MMC_MaxHealth.cpp
+
+```c++
+#include "AbilitySystem/ModMagCalc/MMC_MaxHealth.h"
+
+#include "AbilitySystem/AuraAttributeSet.h"
+#include "Interaction/CombatInterface.h"
+
+
+UMMC_MaxHealth::UMMC_MaxHealth()
+{
+	VigorDef.AttributeToCapture = UAuraAttributeSet::GetVigorAttribute();
+	VigorDef.AttributeSource = EGameplayEffectAttributeCaptureSource::Target;
+	VigorDef.bSnapshot = false;
+}
+
+float UMMC_MaxHealth::CalculateBaseMagnitude_Implementation(const FGameplayEffectSpec& Spec) const
+{
+	//Gather tags from source and target
+	const FGameplayTagContainer* SourceTag = Spec.CapturedSourceTags.GetAggregatedTags();
+	const FGameplayTagContainer* TargetTag = Spec.CapturedTargetTags.GetAggregatedTags();
+
+	FAggregatorEvaluateParameters EvaluateParameters;
+	EvaluateParameters.SourceTags = SourceTag;
+	EvaluateParameters.TargetTags = TargetTag;
+
+	float Vigor = 0.f;
+	GetCapturedAttributeMagnitude(VigorDef,Spec,EvaluateParameters,Vigor);
+	Vigor = FMath::Max(Vigor,0.f);
+
+	ICombatInterface* CombatInterface = Cast<ICombatInterface>(Spec.GetContext().GetSourceObject());
+	const int32 Level = CombatInterface->GetPlayerLevel();
+
+	return 80.f + 2.5 * Vigor + 10.f * Level;
+}
+
+```
+
+编译后在 GameplayEffect > Custome Caculation Class 中选择这个 cpp 文件
+
 # 参考文章｜视频
 
 [图片中的视频](https://www.bilibili.com/video/BV12m4y1W76X?p=66&vd_source=cb5794df42f8077181bc5f31958ae7df)
