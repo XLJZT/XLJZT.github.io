@@ -1,7 +1,7 @@
 ---
 title: UE Game Effect的数值计算
 description: UE Game Effect的数值计算
-date: 2023-8-25
+pubDate: 2023-8-25
 heroImage: https://gitlab.com/XLJZT/img/-/raw/main/blog/pictures/2023/08/25_9_59_25_image-20230825092950426.png
 tags: 
 - UE
