@@ -1,8 +1,9 @@
 ---
-title: 记录一下安装hexo的过程
-date: 2022-1-10
-top_image: https://gitlab.com/XLJZT/img/-/raw/main/blog/001.svg
-tag: Hexo
+title: "记录一下安装hexo的过程"
+date: "2022-1-10"
+top_image: "https://gitlab.com/XLJZT/img/-/raw/main/blog/001.svg"
+tags: 
+  - Hexo
 ---
 
 
