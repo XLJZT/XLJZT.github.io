@@ -2,6 +2,7 @@
 title: 记录一下安装hexo的过程
 description: 安装hexo的过程
 pubDate: 2022-1-10
+heroImage: https://gitlab.com/XLJZT/img/-/raw/main/blog/001.svg
 tags: 
   - Hexo
 ---
