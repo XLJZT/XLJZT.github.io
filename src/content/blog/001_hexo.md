@@ -1,7 +1,7 @@
 ---
-title: "Hello world"
-description: "Show how to use Plain Page"
-pubDate: "Dec 17 2024"
+title: Hello world
+description: Show how to use Plain Page
+pubDate: 2025-2-14
 updatedDate: "Dec 18 2024"
 hide: false
 tags:
