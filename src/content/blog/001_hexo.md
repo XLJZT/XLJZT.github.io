@@ -1,10 +1,12 @@
 ---
-title: "记录一下安装hexo的过程"
+title: "Hello world"
 description: "Show how to use Plain Page"
-date: "Dec 17 2024"
-top_image: "https://gitlab.com/XLJZT/img/-/raw/main/blog/001.svg"
-tags: 
-  - Hexo
+pubDate: "Dec 17 2024"
+updatedDate: "Dec 18 2024"
+hide: false
+tags:
+  - hello
+  - tags
 ---
 
 
