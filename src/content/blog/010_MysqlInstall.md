@@ -7,9 +7,6 @@ tags:
 - Mysql
 - Install
 - Ubuntu
-
-
-
 ---
 
 
