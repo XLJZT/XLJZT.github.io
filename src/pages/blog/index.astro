@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
+import Tags from "../../components/Tags.astro"; // 导入 Tags 组件
 import { generateURL } from "../../utils";
 
 const posts = (await getCollection("blog", post => !post.data.hide)).sort(
@@ -13,7 +14,7 @@ const posts = (await getCollection("blog", post => !post.data.hide)).sort(
   <ul class="blog-posts">
     {
       posts.map(post => (
-        <li>
+        <li class="post-item">
           <span>
             <i>
               <FormattedDate date={post.data.pubDate} />
@@ -30,3 +31,14 @@ const posts = (await getCollection("blog", post => !post.data.hide)).sort(
     }
   </ul>
 </Layout>
+
+<style>
+  .post-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .post-item a {
+    flex-grow: 1;
+  }
+</style>

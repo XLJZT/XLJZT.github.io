@@ -52,7 +52,9 @@ const structuredData = {
   }
   <article>
     <div class="hero-image">
-      {heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
+      {/* 完整注释图片标签
+      {heroImage && <img src={heroImage} alt="" class="responsive-image" />}
+      */}
     </div>
     <div class="prose">
       <div class="title">
@@ -81,6 +83,12 @@ const structuredData = {
   .back-link {
     display: inline-block;
     margin: 12px 0 8px -6px;
+  }
+  .responsive-image {
+  width: 100%;
+  height: auto; /* 保持原始宽高比 */
+  max-width: 1020px; /* 可选最大宽度限制 */
+  display: block; /* 避免图片底部间隙 */
   }
 </style>
 

@@ -2,15 +2,15 @@
 // You can import this data from anywhere in your site by using the `import` keyword.
 
 // 网站配置
-export const SITE_TITLE = "PlainPage";
+export const SITE_TITLE = " 左右小记";
 export const SITE_DESCRIPTION = "Welcome (. ❛ ᴗ ❛.)";
-export const COPYRIGHT = "© 2024 PlainPage All Rights Reserved";
+export const COPYRIGHT = "© " + new Date().getFullYear() + " zuoyouuuu All Rights Reserved";
 export const ICP_NUMBER = "";
 
 // 社交媒体链接, 留空或注释=不显示
 export const SOCIAL_LINKS = {
-  Github: "https://github.com/churchTao",
-  Twitter: "https://twitter.com/yourusername",
+  Github: "https://github.com/zuoyouuuu",
+  //   Twitter: "https://twitter.com/yourusername",
   //   LinkedIn: "https://www.linkedin.com/in/yourusername",
   //   Instagram: "https://www.instagram.com/yourusername",
   //   Facebook: "https://www.facebook.com/yourusername",
@@ -34,9 +34,9 @@ export const NAV_ITEMS = [
 // 博客配置
 export const BLOG_CONFIG = {
   locale: "en-us", // 日期格式化语言
-  profile: "https://github.com/churchTao",
-  authorName: "Author Name", // 作者名称
-  email: "mailto:your-email@example.com",
+  profile: "https://github.com/zuoyouuuu",
+  authorName: "左右", // 作者名称
+  email: "mailto:zuoyouuu@163.com",
   tags: {
     title: "Tags", // 标签页面标题
     description: "All the tags used in posts.", // 标签页面描述
