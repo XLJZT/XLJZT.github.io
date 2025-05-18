@@ -2,7 +2,7 @@
 // You can import this data from anywhere in your site by using the `import` keyword.
 
 // 网站配置
-export const SITE_TITLE = " 左右小记";
+export const SITE_TITLE = " 左右｜Online";
 export const SITE_DESCRIPTION = "Welcome (. ❛ ᴗ ❛.)";
 export const COPYRIGHT = "© " + new Date().getFullYear() + " zuoyouuuu All Rights Reserved";
 export const ICP_NUMBER = "";
